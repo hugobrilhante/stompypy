@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "stomppy"
+version = "0.1.0"
+description = ""
+authors = ["Hugo Brilhante <hugobrilhante@gmail.com>"]
+readme = "README.md"
+packages = [{include = "stomppy", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
