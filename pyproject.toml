@@ -9,6 +9,9 @@ packages = [{include = "stomppy", from = "src"}]
 [tool.poetry.dependencies]
 python = "^3.12"
 
+[tool.poetry.group.dev.dependencies]
+pytest-cov = "^4.1.0"
+
 [tool.ruff]
 line-length = 120
 include = ["pyproject.toml", "src/**/*.py", "test/**/*.py"]
@@ -17,7 +20,10 @@ include = ["pyproject.toml", "src/**/*.py", "test/**/*.py"]
 quote-style = "single"
 
 [tool.ruff.lint]
-select = ["E4", "E7", "E9", "F", "I"]
+select = ["E", "W", "F", "I", "PL"]
+
+[tool.ruff.lint.pylint]
+max-args = 6
 
 [tool.ruff.lint.isort]
 force-single-line = true
