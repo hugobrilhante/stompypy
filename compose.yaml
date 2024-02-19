@@ -1,0 +1,14 @@
+version: '3'
+services:
+  rabbitmq:
+    image: rabbitmq:3.9.29-management
+    volumes:
+      - ./rabbitmq:/etc/rabbitmq/
+    healthcheck:
+      test: [ "CMD-SHELL","rabbitmq-diagnostics -q ping" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "15672:15672"
+      - "61613:61613"
