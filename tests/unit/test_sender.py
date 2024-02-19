@@ -41,7 +41,7 @@ def test_commit(client):
 
 def test_connect(client):
     sender = Sender(client)
-    sender.connect('localhost', '1.2', 'user', 'pass', '1000,1000')
+    sender.connect('localhost', '1.2', 'user', 'pass', (1000, 1000))
     client.send_frame.assert_called_once_with(
         'CONNECT\nhost:localhost\naccept-version:1.2\nlogin:user\npasscode:pass\nheart-beat:1000,1000\n\n\x00'
     )
@@ -77,7 +77,3 @@ def test_unsubscribe(client):
     sender = Sender(client)
     sender.unsubscribe('sub1')
     client.send_frame.assert_called_once_with('UNSUBSCRIBE\nid:sub1\n\n\x00')
-
-
-if __name__ == '__main__':
-    pytest.main()

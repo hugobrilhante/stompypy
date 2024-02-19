@@ -1,4 +1,3 @@
-import pytest
 from stomppy.frame import Frame
 
 
@@ -33,7 +32,3 @@ def test_frame_creation_without_body():
     assert frame.body is None
     expected_frame_string = 'COMMAND\nheader1:value1\nheader2:value2\n\n\x00'
     assert frame == expected_frame_string
-
-
-if __name__ == '__main__':
-    pytest.main()

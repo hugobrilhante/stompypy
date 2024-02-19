@@ -1,5 +1,6 @@
 from typing import Dict
 from typing import Optional
+from typing import Tuple
 
 from stomppy.frame import Frame
 
@@ -90,11 +91,11 @@ class Sender:
 
     def connect(
         self,
-        host: str,
-        accept_version: str,
+        host: Optional[str] = '/',
+        accept_version: str = '1.2',
         login: Optional[str] = None,
         passcode: Optional[str] = None,
-        heart_beat: Optional[str] = None,
+        heart_beat: Optional[Tuple[int, int]] = (0, 0),
     ) -> None:
         """
         Generate and send a CONNECT or STOMP frame.
@@ -104,7 +105,7 @@ class Sender:
             accept_version (str): The versions of the STOMP protocol the client supports.
             login (Optional[str]): The user identifier used to authenticate against a secured STOMP server.
             passcode (Optional[str]): The password used to authenticate against a secured STOMP server.
-            heart_beat (Optional[str]): The Heart-beating settings.
+            heart_beat (Optional[Tuple[int, int]]): The Heart-beating settings.
         """
         headers = {'host': host, 'accept-version': accept_version}
         if login:
@@ -112,7 +113,7 @@ class Sender:
         if passcode:
             headers['passcode'] = passcode
         if heart_beat:
-            headers['heart-beat'] = heart_beat
+            headers['heart-beat'] = f'{heart_beat[0]},{heart_beat[1]}'
         frame = self._generate_frame('CONNECT', headers)
         self.send_frame(frame)
 
