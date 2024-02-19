@@ -5,7 +5,7 @@ from stomppy.constants import EOL
 from stomppy.constants import NULL
 
 
-class FrameStomp(str):
+class Frame(str):
     """
     Represents a generic STOMP frame.
 

@@ -1,12 +1,12 @@
 import pytest
-from stomppy.frames import FrameStomp
+from stomppy.frame import Frame
 
 
 def test_frame_creation():
     command = 'COMMAND'
     headers = {'header1': 'value1', 'header2': 'value2'}
     body = 'body message'
-    frame = FrameStomp(command, headers, body)
+    frame = Frame(command, headers, body)
     assert frame.command == command
     assert frame.headers == headers
     assert frame.body == body
@@ -16,7 +16,7 @@ def test_frame_creation():
 
 def test_frame_creation_without_headers_and_body():
     command = 'COMMAND'
-    frame = FrameStomp(command)
+    frame = Frame(command)
     assert frame.command == command
     assert frame.headers is None
     assert frame.body is None
@@ -27,7 +27,7 @@ def test_frame_creation_without_headers_and_body():
 def test_frame_creation_without_body():
     command = 'COMMAND'
     headers = {'header1': 'value1', 'header2': 'value2'}
-    frame = FrameStomp(command, headers)
+    frame = Frame(command, headers)
     assert frame.command == command
     assert frame.headers == headers
     assert frame.body is None
