@@ -12,16 +12,19 @@ logger = logging.getLogger(__name__)
 
 
 class Client:
-    """A client for connecting to a server and exchanging STOMP frames."""
+    """
+    A client for connecting to a server and exchanging STOMP frames.
+
+    """
 
     connected: bool = False
     heartbeat: Tuple[int, int] = (0, 0)
 
     def __init__(self, host: str, port: int) -> None:
-        """Initialize the STOMP client.
+        """
+        Initialize the STOMP client.
 
         Args:
-        ----
             host (str): The server IP address or hostname.
             port (int): The server port number.
         """
@@ -32,26 +35,32 @@ class Client:
         self.receive_thread.start()
 
     def connect(self) -> None:
-        """Connect the client to the server."""
+        """
+        Connect the client to the server.
+        """
         self.connected = True
         self.socket.connect((self.host, self.port))
 
     def disconnect(self) -> None:
-        """Disconnect the client from the server."""
+        """
+        Disconnect the client from the server.
+        """
         self.connected = False
         self.socket.close()
 
     def send_frame(self, frame: str) -> None:
-        """Send a frame to the server.
+        """
+        Send a frame to the server.
 
         Args:
-        ----
             frame (str): The frame to be sent.
         """
         self.socket.sendall(frame.encode())
 
     def receive_frames(self) -> None:
-        """Receive frames from the server."""
+        """
+        Receive frames from the server.
+        """
         while self.connected:
             buffer = b''
             while self.connected:
@@ -67,10 +76,10 @@ class Client:
                     self.parse_heartbeat(buffer)
 
     def parse_heartbeat(self, buffer: bytes) -> None:
-        """Parse the frame header to extract the heart-beat values.
+        """
+        Parse the frame header to extract the heart-beat values.
 
         Args:
-        ----
             buffer (bytes): The buffer containing the received frame.
         """
         match = re.search(r'heart-beat:(\d+),(\d+)', buffer.decode())
@@ -83,7 +92,9 @@ class Client:
             logger.warning('Heartbeat values not found in the header.')
 
     def send_heartbeat(self) -> None:
-        """Send heartbeats to the server."""
+        """
+        Send heartbeats to the server.
+        """
         while self.heartbeat == (0, 0) and self.connected:
             time.sleep(1)
         while self.connected:
