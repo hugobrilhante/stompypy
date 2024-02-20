@@ -15,7 +15,6 @@ pip install stomppy
 Here's an example demonstrating how to use the `Stomp` class to interact with a STOMP server:
 
 ```python
-import logging
 import time
 
 from stomppy import Listener
@@ -24,21 +23,16 @@ from stomppy import Stomp
 
 class MyListener(Listener):
     def on_disconnect(self):
-        print('Disconnected listener')
+        print('Disconnected')
 
     def on_connect(self):
-        print('Connected listener')
+        print('Connected')
 
     def on_message(self, frame) -> None:
         print('Message:', frame.body)
 
 
 if __name__ == '__main__':
-
-    # Disable DEBUG log
-    logger = logging.getLogger('stomppy')
-    logger.setLevel(logging.INFO)
-
     # Create a STOMP connection to the server
     connection = Stomp.create_connection(host='localhost', port=61613)
 
