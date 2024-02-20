@@ -2,6 +2,7 @@ from typing import Optional
 from typing import Tuple
 
 from stomppy.client import Client
+from stomppy.listeners import Listener
 from stomppy.sender import Sender
 
 
@@ -55,6 +56,19 @@ class Stomp:
             transaction (str): The identifier of the transaction to abort.
         """
         self.sender.abort(transaction)
+
+    def add_listener(self, listener: Listener) -> None:
+        """
+        Add a listener to receive STOMP frame notifications.
+
+        Args:
+            listener (Listener): An object implementing the Listener interface,
+                which will receive notifications about STOMP frames.
+
+        Returns:
+            None
+        """
+        self.client.add_listener(listener)
 
     def begin(self, transaction: str) -> None:
         """
