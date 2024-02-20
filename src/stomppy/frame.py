@@ -5,7 +5,7 @@ from stomppy.constants import EOL
 from stomppy.constants import NULL
 
 
-class Frame(str):
+class Frame:
     """
     Represents a generic STOMP frame.
 
@@ -28,20 +28,40 @@ class Frame(str):
         - STOMP 1.2 Specification: https://stomp.github.io/stomp-specification-1.2.html
     """
 
-    command: str
-    headers: Optional[Dict[str, str]]
-    body: Optional[str]
+    def __init__(
+        self, command: str = None, headers: Optional[Dict[str, str]] = None, body: Optional[str] = None
+    ) -> None:
+        self.command: str = command
+        self.headers: Optional[Dict[str, str]] = headers
+        self.body: str = body
 
-    def __new__(cls, command: str = None, headers: Optional[Dict[str, str]] = None, body: Optional[str] = None) -> str:
-        frame_lines = [command]
-        if headers:
-            frame_lines.extend([f'{key}:{value}' for key, value in headers.items()])
-        if body:
-            frame_lines.extend(['', body])
+    @classmethod
+    def from_string(cls, frame_str: str):
+        """
+        Generate a Frame object from a string formatted according to the STOMP frame specification.
+
+        Args:
+            frame_str (str): The string representing the STOMP frame.
+
+        Returns:
+            Frame: An instance of Frame class representing the parsed STOMP frame.
+        """
+        parts = frame_str.split(EOL * 2)
+        command_headers = parts[0]
+        body = parts[1].rstrip(NULL)
+        command, *headers = command_headers.split(EOL)
+        headers = dict(header.split(':') for header in headers)
+        return cls(command, headers, body)
+
+    def to_string(self) -> str:
+        """
+        Generate the string representation of the STOMP frame.
+
+        """
+        frame_lines = [self.command]
+        if self.headers:
+            frame_lines.extend([f'{key}:{value}' for key, value in self.headers.items()])
+        if self.body:
+            frame_lines.extend(['', self.body])
         frame_lines.extend(['', NULL])
-        frame_string = EOL.join(frame_lines)
-        instance = super().__new__(cls, frame_string)
-        instance.command = command
-        instance.headers = headers
-        instance.body = body
-        return instance
+        return EOL.join(frame_lines)

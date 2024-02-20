@@ -10,7 +10,7 @@ def test_frame_creation():
     assert frame.headers == headers
     assert frame.body == body
     expected_frame_string = 'COMMAND\nheader1:value1\nheader2:value2\n\nbody message\n\n\x00'
-    assert frame == expected_frame_string
+    assert frame.to_string() == expected_frame_string
 
 
 def test_frame_creation_without_headers_and_body():
@@ -20,7 +20,7 @@ def test_frame_creation_without_headers_and_body():
     assert frame.headers is None
     assert frame.body is None
     expected_frame_string = 'COMMAND\n\n\x00'
-    assert frame == expected_frame_string
+    assert frame.to_string() == expected_frame_string
 
 
 def test_frame_creation_without_body():
@@ -31,4 +31,4 @@ def test_frame_creation_without_body():
     assert frame.headers == headers
     assert frame.body is None
     expected_frame_string = 'COMMAND\nheader1:value1\nheader2:value2\n\n\x00'
-    assert frame == expected_frame_string
+    assert frame.to_string() == expected_frame_string
