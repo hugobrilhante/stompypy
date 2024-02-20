@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "stomppy"
-version = "0.1.0"
+version = "0.3.0"
 description = "The StompPy is a simple implementation of the STOMP (Simple Text Oriented Messaging Protocol) protocol. It provides an easy way to connect to and exchange STOMP frames with a STOMP server."
 authors = ["Hugo Brilhante <hugobrilhante@gmail.com>"]
 readme = "README.md"
