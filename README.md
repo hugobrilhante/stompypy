@@ -15,22 +15,49 @@ pip install stomppy
 Here's an example demonstrating how to use the `Stomp` class to interact with a STOMP server:
 
 ```python
-from stomppy.stomp import Stomp
+import logging
+import time
 
-# Create a STOMP connection to the server
-connection = Stomp.create_connection(host='localhost', port=61613)
+from stomppy import Listener
+from stomppy import Stomp
 
-# Connect to the STOMP server
-connection.connect()
 
-# Subscribe to a destination
-connection.subscribe(id='1', destination='/queue/example', ack_mode='auto')
+class MyListener(Listener):
+    def on_disconnect(self):
+        print('Disconnected listener')
 
-# Send a message to the destination
-connection.send(destination='/queue/example', content_type='text/plain', body='Hello, World!')
+    def on_connect(self):
+        print('Connected listener')
 
-# Disconnect from the server
-connection.disconnect()
+    def on_message(self, frame) -> None:
+        print('Message:', frame.body)
+
+
+if __name__ == '__main__':
+
+    # Disable DEBUG log
+    logger = logging.getLogger('stomppy')
+    logger.setLevel(logging.INFO)
+
+    # Create a STOMP connection to the server
+    connection = Stomp.create_connection(host='localhost', port=61613)
+
+    # Add listener
+    connection.add_listener(MyListener())
+
+    # Connect to the STOMP server
+    connection.connect()
+
+    # Subscribe to a destination
+    connection.subscribe(id='1', destination='/queue/example', ack_mode='auto')
+
+    # Send a message to the destination
+    connection.send(destination='/queue/example', content_type='text/plain', body=f'Hello World!')
+
+    time.sleep(1)
+
+    # Disconnect from the server
+    connection.disconnect()
 ```
 
 ## Methods of the Stomp Class 🛠️
