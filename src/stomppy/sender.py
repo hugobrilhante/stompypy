@@ -16,7 +16,7 @@ class Sender:
         - STOMP 1.2 Specification: https://stomp.github.io/stomp-specification-1.2.html
     """
 
-    frame_class = Frame
+    frame_class: Frame = Frame
 
     def __init__(self, client):
         self.client = client
@@ -44,7 +44,7 @@ class Sender:
         Returns:
             str: The generated STOMP frame.
         """
-        return self.frame_class(command, headers, body)
+        return self.frame_class(command, headers, body).to_string()
 
     def ack(self, message_id: str, transaction: Optional[str] = None) -> None:
         """
