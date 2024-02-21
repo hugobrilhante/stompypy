@@ -1,4 +1,4 @@
-# StompPy 📦
+# StompPy <img src="./docs/images/StompPy.png" width=35 height=35>
 
 The StompPy is a simple implementation of the STOMP (Simple Text Oriented Messaging Protocol) protocol. It provides an easy way to connect to and exchange STOMP frames with a STOMP server.
 
