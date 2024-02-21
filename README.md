@@ -1,4 +1,4 @@
-# StompyPy <img src="./docs/images/stompypy.png" width=35 height=35>
+# StompyPy <img src="https://github.com/hugobrilhante/stomppy/blob/main/docs/images/stompypy.png" width=35 height=35>
 
 The stompypy is a simple implementation of the STOMP (Simple Text Oriented Messaging Protocol) protocol. It provides an easy way to connect to and exchange STOMP frames with a STOMP server.
 
