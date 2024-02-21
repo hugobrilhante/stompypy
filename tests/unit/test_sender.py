@@ -1,7 +1,7 @@
 from unittest.mock import MagicMock
 
 import pytest
-from stomppy.sender import Sender
+from stompypy.sender import Sender
 
 
 @pytest.fixture

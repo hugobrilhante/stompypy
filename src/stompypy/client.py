@@ -4,14 +4,14 @@ import socket
 import threading
 import time
 
-from stomppy.constants import EOL
-from stomppy.constants import NULL
-from stomppy.exceptions import ClientError
-from stomppy.frame import Frame
-from stomppy.listeners import Listener
-from stomppy.managers import EventManager
+from stompypy.constants import EOL
+from stompypy.constants import NULL
+from stompypy.exceptions import ClientError
+from stompypy.frame import Frame
+from stompypy.listeners import Listener
+from stompypy.managers import EventManager
 
-logger = logging.getLogger('stomppy.client')
+logger = logging.getLogger('stompypy.client')
 
 
 class Client:

@@ -1,13 +1,13 @@
 [tool.poetry]
-name = "stomppy"
-version = "0.4.0"
-description = "The StompPy is a simple implementation of the STOMP (Simple Text Oriented Messaging Protocol) protocol. It provides an easy way to connect to and exchange STOMP frames with a STOMP server."
+name = "stompypy"
+version = "0.1.0"
+description = "The StompyPy is a simple implementation of the STOMP (Simple Text Oriented Messaging Protocol) protocol. It provides an easy way to connect to and exchange STOMP frames with a STOMP server."
 authors = ["Hugo Brilhante <hugobrilhante@gmail.com>"]
 readme = "README.md"
 license = "MIT"
-homepage = "https://github.com/hugobrilhante/stomppy"
-repository = "https://github.com/hugobrilhante/stomppy"
-packages = [{include = "stomppy", from = "src"}]
+homepage = "https://github.com/hugobrilhante/stompypy"
+repository = "https://github.com/hugobrilhante/stompypy"
+packages = [{include = "stompypy", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"

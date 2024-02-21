@@ -1,9 +1,9 @@
 from typing import Optional
 from typing import Tuple
 
-from stomppy.client import Client
-from stomppy.listeners import Listener
-from stomppy.sender import Sender
+from stompypy.client import Client
+from stompypy.listeners import Listener
+from stompypy.sender import Sender
 
 
 class Stomp:

@@ -1,13 +1,13 @@
-# StompPy <img src="./docs/images/StompPy.png" width=35 height=35>
+# StompyPy <img src="./docs/images/stompypy.png" width=35 height=35>
 
-The StompPy is a simple implementation of the STOMP (Simple Text Oriented Messaging Protocol) protocol. It provides an easy way to connect to and exchange STOMP frames with a STOMP server.
+The stompypy is a simple implementation of the STOMP (Simple Text Oriented Messaging Protocol) protocol. It provides an easy way to connect to and exchange STOMP frames with a STOMP server.
 
 ## Installation
 
-To install the StompPy package, you can use pip:
+To install the stompypy package, you can use pip:
 
 ```shell
-pip install stomppy
+pip install stompypy
 ```
 
 ## Usage Example 🚀
@@ -17,8 +17,8 @@ Here's an example demonstrating how to use the `Stomp` class to interact with a 
 ```python
 import time
 
-from stomppy import Listener
-from stomppy import Stomp
+from stompypy import Listener
+from stompypy import Stomp
 
 
 class MyListener(Listener):

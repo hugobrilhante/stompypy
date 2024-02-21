@@ -1,4 +1,4 @@
-from stomppy.frame import Frame
+from stompypy.frame import Frame
 
 
 class Listener:

@@ -2,8 +2,8 @@ from unittest.mock import Mock
 from unittest.mock import patch
 
 import pytest
-from stomppy.client import Client
-from stomppy.exceptions import ClientError
+from stompypy.client import Client
+from stompypy.exceptions import ClientError
 
 HOST = 'localhost'
 PORT = 1234

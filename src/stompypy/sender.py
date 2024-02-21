@@ -2,7 +2,7 @@ from typing import Dict
 from typing import Optional
 from typing import Tuple
 
-from stomppy.frame import Frame
+from stompypy.frame import Frame
 
 
 class Sender:

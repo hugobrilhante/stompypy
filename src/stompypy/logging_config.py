@@ -11,5 +11,5 @@ def setup_logging():
     handler.setLevel(logging.INFO)
     handler.setFormatter(formatter)
 
-    logger = logging.getLogger('stomppy')
+    logger = logging.getLogger('stompypy')
     logger.addHandler(handler)
