@@ -4,11 +4,14 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=hugobrilhante_stompypy&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=hugobrilhante_stompypy)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=hugobrilhante_stompypy&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=hugobrilhante_stompypy)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=hugobrilhante_stompypy&metric=security_rating)](https://sonarcloud.io/dashboard?id=hugobrilhante_stompypy)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=hugobrilhante_stompypy&metric=ncloc)](https://sonarcloud.io/dashboard?id=hugobrilhante_stompypy)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=hugobrilhante_stompypy&metric=bugs)](https://sonarcloud.io/dashboard?id=hugobrilhante_stompypy)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=hugobrilhante_stompypy&metric=code_smells)](https://sonarcloud.io/dashboard?id=hugobrilhante_stompypy)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=hugobrilhante_stompypy&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=hugobrilhante_stompypy)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=hugobrilhante_stompypy&metric=ncloc)](https://sonarcloud.io/dashboard?id=hugobrilhante_stompypy)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=hugobrilhante_stompypy&metric=coverage)](https://sonarcloud.io/summary/new_code?id=hugobrilhante_stompypy)
+[![PyPI version](https://badge.fury.io/py/stompypy.svg)](https://badge.fury.io/py/stompypy)
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/https://github.com/hugobrilhante/stompypy/blob/main/LICENSE)
+[![Downloads](https://pepy.tech/badge/stompypy/week)](https://pepy.tech/project/stompypy/week)
 
 The stompypy is a simple implementation of the STOMP (Simple Text Oriented Messaging Protocol) protocol. It provides an easy way to connect to and exchange STOMP frames with a STOMP server.
 
