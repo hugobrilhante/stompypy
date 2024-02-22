@@ -1,6 +1,6 @@
 import importlib.metadata
 
-__version__ = importlib.metadata.version(__package__ or __name__)
+__version__ = importlib.metadata.version('stompypy')
 
 from .listeners import Listener
 from .logging_config import setup_logging

@@ -1,6 +1,6 @@
 from typing import List
 
-from stompypy.listeners import Listener
+from .listeners import Listener
 
 
 class EventManager:

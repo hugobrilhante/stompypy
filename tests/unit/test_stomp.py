@@ -1,7 +1,8 @@
 from unittest.mock import Mock
 
 import pytest
-from stompypy.stomp import Stomp
+
+from src.stompypy.stomp import Stomp
 
 
 @pytest.fixture

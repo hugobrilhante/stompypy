@@ -1,4 +1,4 @@
-from stompypy.managers import EventManager
+from src.stompypy.managers import EventManager
 
 
 class MockListener:

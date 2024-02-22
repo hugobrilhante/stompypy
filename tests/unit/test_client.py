@@ -2,13 +2,15 @@ from unittest.mock import Mock
 from unittest.mock import patch
 
 import pytest
-from stompypy.client import Client
-from stompypy.exceptions import ClientError
+
+from src.stompypy.client import Client
+from src.stompypy.exceptions import ClientError
 
 HOST = 'localhost'
 PORT = 1234
 TEST_FRAME = 'test_frame'
 HEARTBEAT_VALUES = (10000, 10000)
+CONNECT_STRING = 'socket.socket.connect'
 
 
 @pytest.fixture
@@ -19,7 +21,7 @@ def client():
 
 
 def test_connect(client):
-    with patch('socket.socket.connect') as mock_connect:
+    with patch(CONNECT_STRING) as mock_connect:
         client.connect()
         mock_connect.assert_called_once_with((HOST, PORT))
 
@@ -31,7 +33,7 @@ def test_disconnect(client):
 
 
 def test_send_frame(client):
-    with patch('socket.socket.connect'):
+    with patch(CONNECT_STRING):
         with patch('socket.socket.sendall') as mock_sendall:
             client.send_frame(TEST_FRAME)
             mock_sendall.assert_called_once_with(TEST_FRAME.encode())
@@ -44,7 +46,7 @@ def test_add_listener(client):
 
 
 def test_receive_frames(client):
-    with patch('socket.socket.connect'):
+    with patch(CONNECT_STRING):
         with patch('socket.socket.recv', side_effect=[b'test_frame\n', b'\n']) as mock_recv:
             with pytest.raises(ClientError):
                 client.connected.set()
@@ -73,6 +75,6 @@ def test_start_heartbeat_thread(client):
 
 
 def test_exit(client):
-    with pytest.raises(Exception):
+    with pytest.raises(ClientError):
         with Client(HOST, PORT):
-            raise Exception('Test exception')
+            raise ClientError('Test exception')

@@ -1,8 +1,8 @@
 from typing import Dict
 from typing import Optional
 
-from stompypy.constants import EOL
-from stompypy.constants import NULL
+from .constants import EOL
+from .constants import NULL
 
 
 class Frame:
