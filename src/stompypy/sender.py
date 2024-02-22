@@ -16,7 +16,7 @@ class Sender:
         - STOMP 1.2 Specification: https://stomp.github.io/stomp-specification-1.2.html
     """
 
-    frame_class: Frame = Frame
+    frame_class = Frame
 
     def __init__(self, client):
         self.client = client

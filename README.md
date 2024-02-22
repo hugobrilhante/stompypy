@@ -1,4 +1,14 @@
-# StompyPy <img src="https://github.com/hugobrilhante/stomppy/blob/main/docs/images/stompypy.png" width=35 height=35>
+# StompyPy <img src="https://github.com/hugobrilhante/stomppy/blob/main/docs/images/stompypy.png" width=35 height=35 />
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=hugobrilhante_stompypy&metric=alert_status)](https://sonarcloud.io/dashboard?id=hugobrilhante_stompypy)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=hugobrilhante_stompypy&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=hugobrilhante_stompypy)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=hugobrilhante_stompypy&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=hugobrilhante_stompypy)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=hugobrilhante_stompypy&metric=security_rating)](https://sonarcloud.io/dashboard?id=hugobrilhante_stompypy)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=hugobrilhante_stompypy&metric=ncloc)](https://sonarcloud.io/dashboard?id=hugobrilhante_stompypy)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=hugobrilhante_stompypy&metric=bugs)](https://sonarcloud.io/dashboard?id=hugobrilhante_stompypy)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=hugobrilhante_stompypy&metric=code_smells)](https://sonarcloud.io/dashboard?id=hugobrilhante_stompypy)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=hugobrilhante_stompypy&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=hugobrilhante_stompypy)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=hugobrilhante_stompypy&metric=coverage)](https://sonarcloud.io/summary/new_code?id=hugobrilhante_stompypy)
 
 The stompypy is a simple implementation of the STOMP (Simple Text Oriented Messaging Protocol) protocol. It provides an easy way to connect to and exchange STOMP frames with a STOMP server.
 
@@ -68,3 +78,4 @@ if __name__ == '__main__':
 - `unsubscribe(id: str) -> None`: Unsubscribes from a destination.
 
 For more information about the STOMP protocol, refer to the [STOMP 1.2 Specification](https://stomp.github.io/stomp-specification-1.2.html).
+```

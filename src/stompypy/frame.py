@@ -36,7 +36,7 @@ class Frame:
         self.body: str = body
 
     @classmethod
-    def from_string(cls, frame_str: str):
+    def from_string(cls, frame_str: str) -> 'Frame':
         """
         Generate a Frame object from a string formatted according to the STOMP frame specification.
 

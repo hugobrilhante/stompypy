@@ -19,7 +19,7 @@ class Client:
     A client for connecting to a server and exchanging STOMP frames.
     """
 
-    frame_class: Frame = Frame
+    frame_class = Frame
 
     def __init__(self, host: str, port: int) -> None:
         """
@@ -91,7 +91,7 @@ class Client:
                 buffer = self._receive()
                 if buffer:
                     frame_str = buffer.decode()
-                    frame = self.frame_class.from_string(frame_str)
+                    frame: Frame = self.frame_class.from_string(frame_str)
                     logger.debug('Received frame: %s', frame_str)
                     self._handle_frame(frame)
         except Exception as exc:
