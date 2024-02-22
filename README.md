@@ -11,7 +11,7 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=hugobrilhante_stompypy&metric=coverage)](https://sonarcloud.io/summary/new_code?id=hugobrilhante_stompypy)
 [![PyPI version](https://badge.fury.io/py/stompypy.svg)](https://badge.fury.io/py/stompypy)
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/https://github.com/hugobrilhante/stompypy/blob/main/LICENSE)
-[![Downloads](https://pepy.tech/badge/stompypy/week)](https://pepy.tech/project/stompypy/week)
+[![Downloads](https://static.pepy.tech/badge/stompypy)](https://pepy.tech/project/stompypy)
 
 The stompypy is a simple implementation of the STOMP (Simple Text Oriented Messaging Protocol) protocol. It provides an easy way to connect to and exchange STOMP frames with a STOMP server.
 
