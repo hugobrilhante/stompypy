@@ -26,7 +26,7 @@ quote-style = "single"
 select = ["E", "W", "F", "I", "PL"]
 
 [tool.ruff.lint.pylint]
-max-args = 6
+max-args = 13
 
 [tool.ruff.lint.isort]
 force-single-line = true

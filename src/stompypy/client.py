@@ -1,6 +1,7 @@
 import logging
 import re
 import socket
+import ssl
 import threading
 import time
 
@@ -21,19 +22,64 @@ class Client:
 
     frame_class = Frame
 
-    def __init__(self, host: str, port: int) -> None:
+    def __init__(
+        self,
+        host: str,
+        port: int,
+        use_ssl: bool = False,
+        certfile: str = None,
+        keyfile: str = None,
+        cafile: str = None,
+    ) -> None:
         """
         Initialize the STOMP client.
 
         Args:
             host (str): The server IP address or hostname.
             port (int): The server port number.
+            use_ssl (bool): Whether to use SSL/TLS or not.
+            certfile (str): Path to the client certificate file.
+            keyfile (str): Path to the client key file.
+            cafile (str): Path to the CA certificate file.
         """
         self.host = host
         self.port = port
+        self.use_ssl = use_ssl
+        self.certfile = certfile
+        self.keyfile = keyfile
+        self.cafile = cafile
         self.connected = threading.Event()
         self.event_manager = EventManager()
-        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.socket = None
+        self.heartbeat = (0, 0)
+        self._setup_socket()
+
+    def _setup_socket(self) -> None:
+        """
+        Set up the socket for the client.
+        """
+        try:
+            self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            if self.use_ssl:
+                self._setup_ssl()
+        except Exception as exc:
+            logger.exception(exc)
+            raise ClientError(f'Error setting up socket: {exc}')
+
+    def _setup_ssl(self) -> None:
+        """
+        Setup SSL/TLS configuration.
+        """
+        try:
+            context = ssl.create_default_context()
+            if self.cafile:
+                context.load_verify_locations(cafile=self.cafile)
+            if self.certfile and self.keyfile:
+                context.load_cert_chain(certfile=self.certfile, keyfile=self.keyfile)
+            self.socket = context.wrap_socket(self.socket, server_hostname=self.host)
+        except Exception as exc:
+            logger.exception(exc)
+            raise ClientError(f'Error setting up SSL: {exc}')
 
     def connect(self) -> None:
         """
@@ -45,6 +91,7 @@ class Client:
             self._start_receive_thread()
             self.event_manager.notify('on_connect')
         except Exception as exc:
+            logger.exception(exc)
             raise ClientError(f'Error connecting to the server: {exc}')
 
     def disconnect(self) -> None:
@@ -59,6 +106,7 @@ class Client:
                     thread.join()
             self.socket.close()
         except Exception as exc:
+            logger.exception(exc)
             raise ClientError(f'Error disconnecting from the server: {exc}')
 
     def send_frame(self, frame: str) -> None:
@@ -71,6 +119,7 @@ class Client:
         try:
             self.socket.sendall(frame.encode())
         except Exception as exc:
+            logger.exception(exc)
             raise ClientError(f'Error sending frame to the server: {exc}')
 
     def add_listener(self, listener: Listener) -> None:

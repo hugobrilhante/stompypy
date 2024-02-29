@@ -23,18 +23,38 @@ class Stomp:
         self.sender: Sender = sender
 
     @classmethod
-    def create_connection(cls, host: str, port: int):
+    def create_connection(
+        cls,
+        host: str,
+        port: int,
+        use_ssl: bool = False,
+        certfile: str = None,
+        keyfile: str = None,
+        cafile: str = None,
+    ):
         """
         Create a Stomp object without establishing a connection.
 
         Args:
             host (str): Hostname or IP address of the Stomp server.
             port (int): Port number of the Stomp server.
+            use_ssl (bool): Whether to use SSL/TLS or not.
+            certfile (str): Path to the client certificate file.
+            keyfile (str): Path to the client key file.
+            cafile (str): Path to the CA certificate file.
 
         Returns:
             Stomp: Stomp object ready for connection.
         """
-        client: Client = Client(host=host, port=port)
+        client: Client = Client(
+            host=host,
+            port=port,
+            use_ssl=use_ssl,
+            certfile=certfile,
+            keyfile=keyfile,
+            cafile=cafile,
+        )
+
         sender: Sender = Sender(client)
         return cls(client, sender)
 
