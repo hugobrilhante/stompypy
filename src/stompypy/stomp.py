@@ -114,7 +114,7 @@ class Stomp:
         accept_version: str = '1.2',
         login: Optional[str] = None,
         passcode: Optional[str] = None,
-        heart_beat: Optional[Tuple[int, int]] = (0, 0),
+        heartbeat: Optional[Tuple[int, int]] = (0, 0),
     ) -> None:
         """
         Connect to the Stomp server.
@@ -124,10 +124,10 @@ class Stomp:
             accept_version (str): STOMP protocol versions accepted. Defaults to '1.2'.
             login (Optional[str]): Login username. Defaults to None.
             passcode (Optional[str]): Login password. Defaults to None.
-            heart_beat (Optional[Tuple[int, int]]): Tuple of client and server heart-beat settings. Defaults to (0, 0).
+            heartbeat (Optional[Tuple[int, int]]): Tuple of client and server heart-beat settings. Defaults to (0, 0).
         """
         self.client.connect()
-        self.sender.connect(host, accept_version, login, passcode, heart_beat)
+        self.sender.connect(host, accept_version, login, passcode, heartbeat)
 
     def disconnect(self, receipt_id: Optional[str] = None) -> None:
         """
