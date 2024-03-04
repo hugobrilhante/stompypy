@@ -161,6 +161,8 @@ class Client:
                 if not chunk:
                     break
                 buffer += chunk
+                if EOL.encode() == chunk:
+                    logger.debug('Received heartbeat')
                 if NULL.encode() in chunk:
                     break
             return buffer
@@ -172,7 +174,7 @@ class Client:
         """
         Start a daemon thread to receive frames from the server.
         """
-        receive_thread = threading.Thread(target=self.receive_frames)
+        receive_thread = threading.Thread(target=self.receive_frames, name='ReceiveThread')
         receive_thread.daemon = True
         receive_thread.start()
 
@@ -212,7 +214,7 @@ class Client:
         """
         Start a daemon thread to send heartbeats to the server.
         """
-        heartbeat_thread = threading.Thread(target=self._send_heartbeat)
+        heartbeat_thread = threading.Thread(target=self._send_heartbeat, name='HeartbeatThread')
         heartbeat_thread.daemon = True
         heartbeat_thread.start()
 
@@ -222,7 +224,7 @@ class Client:
         """
         try:
             while self.connected.is_set():
-                time.sleep(self.heartbeat[0])
+                time.sleep(self.heartbeat[1] / 1000)
                 if self.connected.is_set():
                     try:
                         self.socket.sendall(EOL.encode())
