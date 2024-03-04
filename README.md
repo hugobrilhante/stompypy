@@ -81,4 +81,9 @@ if __name__ == '__main__':
 - `unsubscribe(id: str) -> None`: Unsubscribes from a destination.
 
 For more information about the STOMP protocol, refer to the [STOMP 1.2 Specification](https://stomp.github.io/stomp-specification-1.2.html).
-```
+
+## Areas for Improvement:
+
+- [ ] More comprehensive documentation
+- [ ] Improved connection resilience
+- [ ] Enhance communication via SSL/TLS
